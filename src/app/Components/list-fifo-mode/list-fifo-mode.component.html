@@ -1,0 +1,38 @@
+<div class="margenes_opciones" style="margin-top: 20px">
+  <h4>Insertar mensaje en fifo</h4>
+  <form>
+    <div>
+      <label for="msgNum">Número de mensaje: </label>
+      <input
+        type="number"
+        id="msgNum"
+        name="name"
+        style="margin-left: 10px"
+        [(ngModel)]="msgNum"
+        placeholder="ej: 0"
+      />
+    </div>
+    <div>
+      <button
+        (click)="insertMsgFifo(msgNum)"
+        type="button"
+        class="btn btn-primary"
+      >
+        Insertar mensaje en fifo
+      </button>
+      <p>{{ msgInsert }}</p>
+    </div>
+  </form>
+
+  <h4>Mostrar variables mensaje actual</h4>
+  <button (click)="variablesAndValues()" type="button" class="btn btn-primary">
+    Mostrar variables de mensaje actual
+  </button>
+  @if(show == true) { @for(data of dataVariable ; track $index) {
+  <p>Nombre variable: {{ data.name }}</p>
+  <p>Valor de la variable: {{ data.value }}</p>
+
+  }
+  <p>{{ mssgVariable }}</p>
+  }
+</div>

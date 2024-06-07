@@ -1,5 +1,5 @@
 {
-  "name": "limitronic-impr",
+  "name": "limitronic-impresoras",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:limitronic_impr": "node dist/limitronic_impr/server/server.mjs"
+    "serve:ssr:limitronic_impresoras": "node dist/limitronic_impresoras/server/server.mjs"
   },
   "private": true,
   "dependencies": {

@@ -1,27 +1,53 @@
-# LimitronicImpr
+# LimitronicImpresoras
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.3.
+Este proyecto ha sido generado con [Angular CLI](https://github.com/angular/angular-cli) versión 17.3.3. standalone = true.
+
+La interfaz está mayormente hecha con Bootstrap v5.3.x.
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Ejecuta `ng serve --open` para que la web se abra en la siguiente dirección `http://localhost:4200/`. La aplicación se actualiza automáticamente por cada cambio que se realice y se guarde.
 
-## Code scaffolding
+El código está dividido en "Components", "Intefaces" , "Interceptos" y "Services".
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Components:
 
-## Build
+ **botones:** componente que contiene los botones para ir al modo general, fifo, list, fifo/list.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+ **header:** lo encontramos en toda la web, es el banner donde pone 'Limitronic', si lo pinchamos nos dirige al inicio automáticamente. Tenemos también dentro otro componente llamado "settings".
 
-## Running unit tests
+ **settings:** este compoente se representa con un engranaje, el cual nos lleva a /settings, donde podremos cambiar la ip predefinida (localhost) y así poder conectarse a diferentes impresoras.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+ **inicio:** Página de inicio que contiene el componente 'botones'.
 
-## Running end-to-end tests
+ **app.component:** está fuera de la carpeta 'Components', contiene el 'header', por ello, nunca dejaremos de ver el header, aunque naveguemos en diferentes páginas.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+ **spinner:** Simplemente es para la animación de cargar, sólo se usa en la llamada a la API que te dice si el sistema está activo o no.
 
-## Further help
+**general-mode, fifo-mode, list-fifo-mode, list-mode:** Son los componentes que contienen las órdenes de qué hacer con cada llamada a la API. En general solo tenemos llamadas que se hacen en modo general (tener en cuenta que varias cosas de este modo también pueden ejecutarse en cualquier otro, por ej: conocer el estado de la impresora, entre otros.). Destacar que lo que hay en fifo, list y fifo-list, probablemente no pueda ejecutarse en otro modo que no sea ESE específico.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+**page-not-found:** solo tiene un h2 que pone 'Page Not Found', y solo se ve cuando se escribe una ruta, aunque la web debería redirigirte a 'inicio'.
+
+### Interfaces: 
+
+Todos los archivos .ts de interfaces son JSON que representa lo que devuelve o lo que pide cada llamada de API. Se usan en los componentes.
+
+### Interceptos:
+
+Solo hay 1, es del spinner, sirve para esconderlo cuando ya se haya cargado lo que se esté ejecutando.
+
+### Services: 
+
+**ConfigService:** Contiene una url private predefinida con localhost, y los metodos set y get para poder modificar este por diferentes Ips de las impresoras.
+
+**TODOS LOS SERVICE REQUEST SE COMPLEMENTAN CON CONFIGSERVICE.**
+
+**FifoRequest:** Contiene las llamadas específicas para el modo fifo (API).
+
+**ListFifoRequest:** Contiene las llamadas espcíficas para el modo list-fifo (API).
+
+**ListRequest:** Contiene las llamadas específicas para el modo list (API).
+
+**Request:** Contiene las llamadas para el modo general, de las cuales algunas pueden usarse en los diferentes modos (API).
+
+**Spinner:** Sirve para mostrar o esconder el spinner.

@@ -14,16 +14,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have the 'limitronic_impr' title`, () => {
+  it(`should have the 'limitronic_impresoras' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('limitronic_impr');
+    expect(app.title).toEqual('limitronic_impresoras');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, limitronic_impr');
+    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, limitronic_impresoras');
   });
 });
